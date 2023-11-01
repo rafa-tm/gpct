@@ -13,6 +13,7 @@ const pagesDir = resolve(srcDir, 'pages');
 const assetsDir = resolve(srcDir, 'assets');
 const outDir = resolve(rootDir, 'dist');
 const publicDir = resolve(rootDir, 'public');
+const componestsDir = resolve(srcDir, 'components');
 
 const isDev = process.env.__DEV__ === 'true';
 const isProduction = !isDev;
@@ -27,6 +28,7 @@ export default defineConfig({
       '@src': srcDir,
       '@assets': assetsDir,
       '@pages': pagesDir,
+      '@components': componestsDir,
     },
   },
   plugins: [

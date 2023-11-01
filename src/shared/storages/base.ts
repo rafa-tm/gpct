@@ -69,6 +69,7 @@ export function createStorage<D>(key: string, fallback: D, config?: { storageTyp
   return {
     get: _getDataFromStorage,
     set,
+
     getSnapshot,
     subscribe,
   };

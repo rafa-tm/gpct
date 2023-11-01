@@ -1,0 +1,190 @@
+.remove-tailwindcss {
+  color: #000;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.remove-tailwindcss h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+
+.remove-tailwindcss h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.75em;
+  margin-top: 0;
+}
+
+.remove-tailwindcss h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.75em;
+  margin-top: 0;
+}
+
+.remove-tailwindcss h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+
+.remove-tailwindcss h5 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+
+.remove-tailwindcss h6 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+
+.remove-tailwindcss p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
+@counter-style thumbs {
+  system: cyclic;
+  symbols: '\1F449';
+  suffix: ' ';
+}
+
+.contains-task-list {
+  list-style-type: thumbs;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding-left: 2em;
+}
+
+.contains-task-list li {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.remove-tailwindcss ol {
+  list-style-type: decimal;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding-left: 2em;
+}
+
+.remove-tailwindcss li {
+  margin-bottom: 0.5em;
+}
+
+.remove-tailwindcss a {
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+.remove-tailwindcss a:hover {
+  text-decoration: none;
+}
+
+.remove-tailwindcss blockquote {
+  border-left-color: #e2e8f0;
+  border-left-width: 0.25rem;
+  border-left-style: solid;
+  color: #718096;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding-left: 1em;
+}
+
+.remove-tailwindcss hr {
+  border-top-color: #e2e8f0;
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+
+.remove-tailwindcss table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1.5em;
+  margin-top: 0;
+  width: 100%;
+}
+
+.remove-tailwindcss table th {
+  border-bottom-color: #e2e8f0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-top-color: #e2e8f0;
+  border-top-width: 1px;
+  border-top-style: solid;
+  font-weight: 600;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  text-align: left;
+}
+
+.remove-tailwindcss table td {
+  border-bottom-color: #e2e8f0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.remove-tailwindcss img {
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+
+.remove-tailwindcss figure {
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+
+.remove-tailwindcss figure > * {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.remove-tailwindcss figure figcaption {
+  color: #718096;
+  font-size: 0.875em;
+  margin-top: 0.5em;
+}
+
+.remove-tailwindcss code {
+  background-color: #f7fafc;
+  border-radius: 0.25rem;
+  color: #4a5568;
+  font-size: 0.875em;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0.25em 0.5em;
+}
+
+.remove-tailwindcss details {
+  margin-bottom: 1.5em;
+  margin-top: 0;
+}
+
+.remove-tailwindcss summary {
+  cursor: pointer;
+  display: list-item;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
