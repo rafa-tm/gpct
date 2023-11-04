@@ -7,7 +7,7 @@ export default function Checkbox({ checked }: React.InputHTMLAttributes<HTMLInpu
     <input
       className="w-4 h-4 border-2 border-gray-300 rounded-sm"
       type="checkbox"
-      value={checkedLocal}
+      value={checkedLocal ? 'on' : 'off'}
       onChange={e => setCheckedLocal(e.target.checked)}
       checked={checkedLocal}
     />

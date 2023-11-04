@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Options from '@pages/options/Options';
-import '@pages/options/markdownStyle.css';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { attachTwindStyle } from '@src/shared/style/twind';
 

@@ -2,7 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import Checkbox from './Checkbox';
+import Checkbox from '../Checkbox';
+import './markdownStyle.css';
 
 interface ResultMarkdownProps {
   markdown: string;

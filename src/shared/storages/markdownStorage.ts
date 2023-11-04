@@ -6,7 +6,7 @@ export type Markdown = {
 };
 
 type MarkdownStorage = BaseStorage<Markdown> & {
-  save: (content: string) => void;
+  save: (content: Markdown) => void;
   load: () => string;
   clear: () => void;
   remove: (id: number) => void;
