@@ -2,30 +2,33 @@ import React from 'react';
 import { MdOutlineHelp, MdDelete } from 'react-icons/md';
 import { RiExpandLeftFill, RiExpandRightFill, RiEyeFill } from 'react-icons/ri';
 import ResultMarkdown from '@components/ResultMarkdown';
-import ViewResult from '@components/ViewResult';
+import PreviewResult from '@components/PreviewResult';
 import Header from '@components/Header';
 import Button from '@components/Button';
 import useStorage from '@src/shared/hooks/useStorage';
 import markdownStorage, { Markdown } from '@src/shared/storages/markdownStorage';
 
 const tutorialMarkDown = `Este é um tutorial de Markdown
-  # Titulo 1
-  ## Titulo 1
-  ### Titulo 1
-  
-  ### Checkbox
-  
-  - [ ] Este é um checkbox desmarcado
-  - [x] Este é um checkbox marcado
-  
-  ### Grupo expansivel
-<details>
-<summary>Titulo do Grupo</summary>
+
+# Titulo 1
+
+## Titulo 2
+
+### Titulo 3
+
+### Checkbox
+
+- [ ] Este é um checkbox desmarcado
+- [x] Este é um checkbox marcado
+
+### Grupo expansivel
+
+<grupo titulo="Titulo do Grupo">
 
 ### Conteudo do grupo
 Este é o conteudo do grupo e só é exibido se você expandir o grupo.
 
-</details>
+</grupo>
 
 #### e muito mais, veja mais em:
 [Documentação completa](https://www.markdownguide.org/basic-syntax/)`;
@@ -33,10 +36,12 @@ Este é o conteudo do grupo e só é exibido se você expandir o grupo.
 const Options: React.FC = () => {
   const markdown: Markdown = useStorage(markdownStorage);
   const [markdownEdit, setMarkdownEdit] = React.useState(markdown ? markdown.content : '');
+
   const [showTutorial, setShowTutorial] = React.useState(false);
   const [tutorial, setTutorial] = React.useState(tutorialMarkDown);
 
   const [expandView, setExpandView] = React.useState(false);
+
   const [preview, setPreview] = React.useState(false);
 
   function handleMarkdownChange(event?: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -66,11 +71,16 @@ const Options: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col min-h-screen pb-8 gap-8 bg-slate-50 text-black">
-      <Header />
+      <Header>
+        <Button onClick={handleTutorial} className={showTutorial ? 'bg-stone-500 hover:bg-stone-600' : ''}>
+          <MdOutlineHelp size={22} />
+          <span>Tutorial</span>
+        </Button>
+      </Header>
       <div className="w-full flex flex-col px-8 gap-4">
         {preview && (
-          <div className="absolute top-0 left-0 w-full min-h-screen flex items-start justify-center z-50 py-10 bg-[#00000aa6] ">
-            <ViewResult result={markdownEdit} close={setPreview} />
+          <div className="fixed top-0 left-0 w-full h-full min-h-screen flex items-start justify-center z-50 py-10 bg-[#00000aa6] ">
+            <PreviewResult close={setPreview} />
           </div>
         )}
         {/* Header de opções */}
@@ -87,10 +97,6 @@ const Options: React.FC = () => {
                     <MdDelete size={22} />
                   </Button>
                 )}
-                <Button onClick={handleTutorial} className={showTutorial ? 'bg-stone-500 hover:bg-stone-600' : ''}>
-                  <MdOutlineHelp size={22} />
-                  <span>Tutorial</span>
-                </Button>
               </div>
             </div>
           )}

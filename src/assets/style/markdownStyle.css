@@ -4,14 +4,19 @@
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-size: 1rem;
   line-height: 1.5;
+  background-color: #fff;
 }
 
 .remove-tailwindcss h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.5em;
   margin-top: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e2e8f0;
+  padding-bottom: 0.25em;
 }
 
 .remove-tailwindcss h2 {
@@ -46,14 +51,6 @@
   margin-top: 0;
 }
 
-.remove-tailwindcss h6 {
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1.5;
-  margin-bottom: 0.5em;
-  margin-top: 0;
-}
-
 .remove-tailwindcss p {
   font-size: 1rem;
   line-height: 1.5;
@@ -68,9 +65,11 @@
   padding-left: 0;
 }
 
-.contains-task-list li {
+.task-list-item {
   align-items: center;
   gap: 0.5rem;
+  display: flex;
+  margin-bottom: 0.5em;
 }
 
 .remove-tailwindcss ol {

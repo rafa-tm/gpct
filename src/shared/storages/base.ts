@@ -12,6 +12,7 @@ export type BaseStorage<D> = {
   set: (value: ValueOrUpdate<D>) => Promise<void>;
   getSnapshot: () => D | null;
   subscribe: (listener: () => void) => () => void;
+  remove: (key: number) => void;
 };
 
 export function createStorage<D>(key: string, fallback: D, config?: { storageType?: StorageType }): BaseStorage<D> {
@@ -66,10 +67,14 @@ export function createStorage<D>(key: string, fallback: D, config?: { storageTyp
     _emitChange();
   });
 
+  const remove = (key: number) => {
+    chrome.storage[storageType].remove(key.toString());
+  };
+
   return {
     get: _getDataFromStorage,
     set,
-
+    remove,
     getSnapshot,
     subscribe,
   };

@@ -7,14 +7,21 @@ export type Markdown = {
 
 type MarkdownStorage = BaseStorage<Markdown> & {
   save: (content: Markdown) => void;
-  load: () => string;
+  load: () => Promise<Markdown>;
   clear: () => void;
   remove: (id: number) => void;
 };
 
-const storage = createStorage<Markdown>('markdown-storage-key', [''], {
-  storageType: StorageType.Local,
-});
+const storage = createStorage<Markdown>(
+  'markdown-storage-key',
+  {
+    id: 0,
+    content: '',
+  },
+  {
+    storageType: StorageType.Local,
+  },
+);
 
 const markdownStorage: MarkdownStorage = {
   ...storage,

@@ -3,7 +3,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import Checkbox from '../Checkbox';
-import './markdownStyle.css';
+import Accordion from '../Accordion';
+import '@assets/style/markdownStyle.css';
 
 interface ResultMarkdownProps {
   markdown: string;
@@ -13,7 +14,6 @@ export default function ResultMarkdown({ markdown }: ResultMarkdownProps) {
   return (
     <ReactMarkdown
       className="remove-tailwindcss"
-      // options={{ commonmark: true, gfm: true, pedantic: true, dangerous: false }}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[[rehypeRaw, { allowDangerousHtml: true }]]}
       components={{
@@ -23,6 +23,9 @@ export default function ResultMarkdown({ markdown }: ResultMarkdownProps) {
         a: ({ ...props }) => {
           // eslint-disable-next-line jsx-a11y/anchor-has-content
           return <a {...props} target="_blank" rel="noreferrer" />;
+        },
+        grupo: ({ titulo, children }) => {
+          return <Accordion titulo={titulo}>{children}</Accordion>;
         },
       }}>
       {markdown}

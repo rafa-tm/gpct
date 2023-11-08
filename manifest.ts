@@ -8,7 +8,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  permissions: ['storage'],
+  permissions: ['storage', 'activeTab', 'scripting', 'tabs', 'webRequest', 'webRequestBlocking', 'options'],
   options_page: 'src/pages/options/index.html',
   background: {
     service_worker: 'src/pages/background/index.js',
@@ -26,9 +26,8 @@ const manifest: chrome.runtime.ManifestV3 = {
   },
   content_scripts: [
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      matches: ['https://meet.google.com/*'],
       js: ['src/pages/content/index.js'],
-      // KEY for cache invalidation
       css: ['assets/css/contentStyle<KEY>.chunk.css'],
     },
   ],

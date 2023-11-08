@@ -44,25 +44,26 @@
 
 ## Entregas <a name="installation"></a>
 
-### Primeira entrega ✅ (03/11/2023)
+<details><summary>Primeira entrega ✅ (03/11/2023)</summary>
+</details>
 
-### Segunda entrega ❇️ (10/11/2023)
+<details><summary>Segunda entrega ❇️ (10/11/2023)</summary>
 
-- Ao iniciar uma reunião no Google Meeting, a extensão iria carregar automaticamente o roteiro (no modo visualização), para que o usuário possa ir lendo, abrindo/fechando partes, marcando os checkboxes. Não apresentar interface antes de iniciar a reunião.
+- ✅ Ao iniciar uma reunião no Google Meeting, a extensão iria carregar automaticamente o roteiro (no modo visualização), para que o usuário possa ir lendo, abrindo/fechando partes, marcando os checkboxes. Não apresentar interface antes de iniciar a reunião.
 
-- Caso não seja uma sidebar, ele poderá arrastar o elemento para qualquer lugar na tela (pra tirar da frente da imagem das pessoas por exemplo), e a posição (%) deverá ficar salva no localstorage, para voltar no mesmo lugar na próxima reunião. 
+- ✅ Caso não seja uma sidebar, ele poderá arrastar o elemento para qualquer lugar na tela (pra tirar da frente da imagem das pessoas por exemplo), e a posição (%) deverá ficar salva no localstorage, para voltar no mesmo lugar na próxima reunião. 
 
-- Deve haver uma forma de "minimizar" a extensão, que irá deixar apenas um ícone visível para ao clicar voltar a exibir o conteúdo aberto.
+- ✅ Deve haver uma forma de "minimizar" a extensão, que irá deixar apenas um ícone visível para ao clicar voltar a exibir o conteúdo aberto.
 
 - Ao abrir a extensão, ter algum tipo de apresentação explicando como usar, com um botão pra fechar e um checkbox "Não apresentar mais essa introdução", que ao marcado, salvará no localstorage para não exibir mais.
 
-- Ter um botão "?" ou algo do tipo em algum lugar, que abre novamente a janela da introdução.
+- ✅ Ter um botão "?" ou algo do tipo em algum lugar, que abre novamente a janela da introdução.
 
 - ✅ Quando for um checkbox, mesmo que renderize um li, não exibir o bullet. Ou seja, se for `- [ ] Perguntar algo` deverá apresentar sem a "bolinha" na esquerda, já vir direto o checkbox.
 
 - ✅ A extensão deve ter um ícone na banjeida de extensões.
 
-- Para ter um accordeon, a pessoa deve escrever exatamente como abaixo (`grupo` com `titulo`):
+- ✅ Para ter um accordeon, a pessoa deve escrever exatamente como abaixo (`grupo` com `titulo`):
 
 ```
 <grupo titulo="Sem equipe de TI">
@@ -72,3 +73,5 @@ Realmente, ter uma equipe própria dá muito trabalho. Você está certo em não
 [ ] Já pensaram em contratar uma empresa pra isso?
 </grupo>
 ```
+
+</details>

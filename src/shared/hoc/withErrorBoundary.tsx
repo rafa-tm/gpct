@@ -29,7 +29,7 @@ class ErrorBoundary extends Component<
 }
 
 export default function withErrorBoundary<T extends Record<string, unknown>>(
-  Component: ComponentType<T>,
+  Component: ComponentType<T> | ReactElement,
   ErrorComponent: ReactElement,
 ) {
   return function WithErrorBoundary(props: T) {
