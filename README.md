@@ -1,7 +1,7 @@
 
 <div align="center">
 <img src="public/icon-128.png" alt="logo"/>
-<h1> Chrome Extension Boilerplate with<br/>React + Vite + TypeScript</h1>
+<h1> Chrome Extension GPCT with<br/>React + Vite + TypeScript</h1>
 
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -11,19 +11,10 @@
 
 </div>
 
-## Table of Contents
+## Indice README
 
-- [Intro](#intro)
-- [Features](#features)
-- [Installation](#installation)
-    - [Procedures](#procedures)
-      - [Chrome](#chrome) 
-      - [Firefox](#firefox) 
-- [Screenshots](#screenshots)
-    - [NewTab](#newtab)
-    - [Popup](#popup)
-- [Examples](#examples)
-- [Documents](#documents)
+- [Tecnologias](#tecnologias)
+- [Entregas](#entregas)
 
 ## Tecnologias presentes<a name="tecnologias"></a>
 
@@ -42,7 +33,7 @@
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 - HRR(Hot Rebuild & Refresh/Reload)
 
-## Entregas <a name="installation"></a>
+## Entregas <a name="entregas"></a>
 
 <details><summary>Primeira entrega ✅ (03/11/2023)</summary>
 </details>
