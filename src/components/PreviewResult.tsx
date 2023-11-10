@@ -1,11 +1,13 @@
+import React from 'react';
 import { MdOutlineMinimize } from 'react-icons/md';
 import logotipo from '@src/assets/img/icon-128.png';
 import ResultMarkdown from '@src/components/ResultMarkdown';
 import useStorage from '@src/shared/hooks/useStorage';
 import markdownStorage, { Markdown } from '@src/shared/storages/markdownStorage';
 
-export default function PreviewResult({ close }: { close: (value: boolean) => void }) {
+export default function PreviewResult({ close, tutorial }: { close: (value: boolean) => void; tutorial?: string }) {
   const markdown: Markdown = useStorage(markdownStorage);
+  // const [markdownContent, setMarkdownContent] = React.useState(markdown ? markdown.content : '');
   return (
     <div className="w-[40%] h-[80%] bg-white overflow-y-scroll">
       <header
@@ -23,7 +25,7 @@ export default function PreviewResult({ close }: { close: (value: boolean) => vo
         </nav>
       </header>
       <div className="w-full py-4 px-8 bg-white">
-        <ResultMarkdown markdown={markdown.content} />
+        <ResultMarkdown markdown={tutorial ? tutorial : markdown.content} />
       </div>
     </div>
   );
