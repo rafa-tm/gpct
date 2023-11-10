@@ -1,6 +1,6 @@
 import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
 
-interface Config {
+export interface Config {
   tutorial: boolean;
 }
 

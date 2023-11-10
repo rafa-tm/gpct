@@ -46,7 +46,7 @@
 
 - ✅ Deve haver uma forma de "minimizar" a extensão, que irá deixar apenas um ícone visível para ao clicar voltar a exibir o conteúdo aberto.
 
-- Ao abrir a extensão, ter algum tipo de apresentação explicando como usar, com um botão pra fechar e um checkbox "Não apresentar mais essa introdução", que ao marcado, salvará no localstorage para não exibir mais.
+- ✅ Ao abrir a extensão, ter algum tipo de apresentação explicando como usar, com um botão pra fechar e um checkbox "Não apresentar mais essa introdução", que ao marcado, salvará no localstorage para não exibir mais.
 
 - ✅ Ter um botão "?" ou algo do tipo em algum lugar, que abre novamente a janela da introdução.
 
