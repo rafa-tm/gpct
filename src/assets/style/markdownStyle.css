@@ -1,10 +1,9 @@
 .remove-tailwindcss {
   color: #000;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-size: 1rem;
   line-height: 1.5;
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
 .remove-tailwindcss h1 {
@@ -12,6 +11,7 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.5em;
+  margin-left: 0.05em;
   margin-top: 0;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -25,6 +25,7 @@
   line-height: 1.25;
   margin-bottom: 0.75em;
   margin-top: 0;
+  margin-left: 0.05em;
 }
 
 .remove-tailwindcss h3 {

@@ -38,7 +38,7 @@
 <details><summary>Primeira entrega ✅ (03/11/2023)</summary>
 </details>
 
-<details><summary>Segunda entrega ❇️ (10/11/2023)</summary>
+<details><summary>Segunda entrega ✅ (10/11/2023)</summary>
 
 - ✅ Ao iniciar uma reunião no Google Meeting, a extensão iria carregar automaticamente o roteiro (no modo visualização), para que o usuário possa ir lendo, abrindo/fechando partes, marcando os checkboxes. Não apresentar interface antes de iniciar a reunião.
 
@@ -64,5 +64,30 @@ Realmente, ter uma equipe própria dá muito trabalho. Você está certo em não
 [ ] Já pensaram em contratar uma empresa pra isso?
 </grupo>
 ```
+
+</details>
+
+<details><summary>Terceira entrega ⚠️ (29/11/2023) </summary>
+
+
+Nesta versão poderemos criar uma conta, e o roteiro ficará salvo em uma collection (nesta versão apenas um roteiro).
+
+- ✅ Abrir sem exigir autenticação e deixar usar como já funciona. Ter um botão "Criar conta" que irá levar para a interface de autenticação com firebase. Escolha um método de authenticação que achar melhor, pode ser email ou telefone.
+
+- ✅ Quando o usuário é criado no firebase, ele terá um uid, que é uma string única que o identifica, é o id dele.
+
+- ✅ Assim que o usuário criar a conta, criar um registro no firestore em users\{uid} e salvar ali createdAt com a data de hoje.
+
+- ✅ Ao carregar a interface, se o usuário estiver autenticado, apresentar um circulo com a primeira letra do email dele, (como se fosse um avatar), pra indicar que está logado.
+
+- ✅ Ao clicar no avatar exibir um menu popup com apenas uma opção por agora "Sair".
+
+- ✅ Ao autenticar, caso tenha um modelo no localstorage, copiar ele para o firebase em uma collection em users\{uid}\scripts\, onde scripts será uma coleection de scripts que o usuário pode ter.
+
+- ✅ Nesta versão, não precisamos ainda implementar toda a lógica de criar novos modelos, ver os existentes e tal, porque irá adicionar muita complexidade.
+
+- ✅ Ao estar autenticado, o front deve escutar users\{uid}\scripts\ e obter o único registro que estará lá, para apresentar, editar, etc. Sempre que for salvar, salvar no firebase.
+
+- ⚠️ O firebase tem um recurso de cache offline, que recomendo usar, assim ao abrir a interface já conseguirá obter instantaneamente o dado do cache do firebase.
 
 </details>
