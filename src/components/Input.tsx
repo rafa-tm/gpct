@@ -10,7 +10,7 @@ interface InputProps {
 export default function Input({ label, type, id, placeholder, register, errors }: InputProps) {
   return (
     <div className="w-full flex flex-col gap-1">
-      {label && <label htmlFor="email">{label}</label>}
+      {label && <label htmlFor={id}>{label}</label>}
       <input
         className="w-full py-2 px-4 rounded-md border-2 border-stone-500 focus:outline-none focus:border-secondary-500"
         type={type}

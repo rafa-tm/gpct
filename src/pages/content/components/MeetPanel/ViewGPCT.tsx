@@ -6,7 +6,14 @@ import Button from '@components/Button';
 import Input from '@components/Input';
 import useStorage from '@src/shared/hooks/useStorage';
 import scriptLocalStorage, { ScriptLocal } from '@root/src/shared/storages/scriptLocalStorage';
-import { MdOutlineMinimize, MdPerson, MdOutlineArrowBack, MdOutlineLogout, MdOutlineLogin } from 'react-icons/md';
+import {
+  MdOutlineMinimize,
+  MdPerson,
+  MdOutlineArrowBack,
+  MdOutlineLogout,
+  MdOutlineLogin,
+  MdError,
+} from 'react-icons/md';
 import { getAllScriptsFromUser } from '@src/firebase/db/User';
 
 import { Scripts } from '@src/models/Scripts';
@@ -32,6 +39,7 @@ export default function ViewGPCT() {
   const [userScripts, setUserScripts] = React.useState<Scripts>(null);
   const [login, setLogin] = React.useState<boolean>(false);
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string>('');
 
   const {
     register,
@@ -50,6 +58,12 @@ export default function ViewGPCT() {
     loginUser(data.email, data.senha).then(response => {
       if (response.error) {
         console.log(response.error);
+
+        if (response.error === 'Firebase: Error (auth/invalid-login-credentials).') {
+          setError('E-mail ou senha incorretos!');
+        } else {
+          setError(response.error);
+        }
         return;
       }
 
@@ -170,6 +184,12 @@ export default function ViewGPCT() {
                 errors={errors}
               />
             </div>
+            {error && (
+              <div className="w-full flex items-center justify-center gap-2 text-lg font-normal text-error-500">
+                <MdError size={24} />
+                <span>{error}</span>
+              </div>
+            )}
 
             <Button type="submit" color="primary" className="w-full py-3 px-4 mt-4">
               <span>Entrar</span>
@@ -181,6 +201,7 @@ export default function ViewGPCT() {
           <ResultMarkdown markdown={userScripts !== null ? userScripts.code : scriptLocal.code} />
         </div>
       )}
+      {/* <div id="GPCT-RESIZE-BOX" className="w-5 h-5 absolute bottom-0 right-0 bg-red-500 cursor-se-resize"></div> */}
     </div>
   );
 }

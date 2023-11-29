@@ -51,54 +51,6 @@ function createPanelElement() {
   return root;
 }
 
-/* 
-Este bloco de código é responsável por tornar a janela arrastável mas apenas puxando o header.
-Com este bloco, se o header estiver escondido, não é possível arrastar a janela.
-Substitui pelo de baixo que torna a janela arrastável em qualquer lugar.
-
-function makeDraggable(draggableHeader) {
-  const panelRoot = document.getElementById('GPCT-PANEL-ROOT');
-  let isDragging = false;
-  let offsetX, offsetY;
-
-  draggableHeader.addEventListener('mousedown', e => {
-    isDragging = true;
-    offsetX = e.clientX - panelRoot.getBoundingClientRect().left;
-    offsetY = e.clientY - panelRoot.getBoundingClientRect().top;
-    panelRoot.style.transition = 'none';
-    draggableHeader.style.cursor = 'grabbing';
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (isDragging) {
-      const left = e.clientX - offsetX;
-      const top = e.clientY - offsetY;
-      panelRoot.style.left = left + 'px';
-      panelRoot.style.top = top + 'px';
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (isDragging) {
-      isDragging = false;
-      panelRoot.style.transition = '0.3s';
-      draggableHeader.style.cursor = 'grab';
-      panelRoot.style.cursor = 'default';
-    }
-  });
-}
-
-function checkAndMakeDraggable() {
-  const draggableHeader = document.getElementById('draggableHeader');
-
-  if (draggableHeader) {
-    makeDraggable(draggableHeader);
-  } else {
-    requestAnimationFrame(checkAndMakeDraggable);
-  }
-}
-*/
-
 function makeDraggable() {
   const panelRoot = document.getElementById('GPCT-PANEL-ROOT');
   let isDragging = false;

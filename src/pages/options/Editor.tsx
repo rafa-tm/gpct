@@ -125,6 +125,7 @@ export default function Editor() {
             }}
             placeholder="Insira um titulo para este roteiro"
             className="w-full px-2 bg-transparent border-b-2 border-stone-200 focus:outline-none focus:border-white"
+            autoComplete="off"
           />
         </div>
       </Header>
@@ -189,6 +190,10 @@ export default function Editor() {
             className="w-full h-full resize-none p-2 placeholder:text-black border border-dark rounded-md text-base font-normal"
             value={showTutorial ? scriptTutorial : scriptEdit.code}
             onChange={event => {
+              if (showTutorial) {
+                setScriptTutorial(event.target.value);
+                return;
+              }
               setScriptEdit({ ...scriptEdit, code: event.target.value, updated_at: new Date().toLocaleString() });
             }}
             placeholder="Digite seu markdown aqui e veja o resultado ao lado."

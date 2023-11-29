@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@components/Button';
 import Input from '@components/Input';
-import { MdOutlineArrowBack } from 'react-icons/md';
+import { MdOutlineArrowBack, MdError } from 'react-icons/md';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -43,8 +43,13 @@ export default function Register() {
 
   const onSubmit = (data: { email: string; senha: string; confirmSenha: string }) => {
     registerUser(data.email, data.senha).then(response => {
+      console.log('RETORNO:', response);
       if (response.error) {
-        setError(response.error);
+        if (response.error === 'Firebase: Error (auth/email-already-in-use).') {
+          setError('E-mail já cadastrado.');
+        } else {
+          setError(response.error);
+        }
         return;
       }
 
@@ -60,7 +65,7 @@ export default function Register() {
   };
 
   return (
-    <div className="w-full flex flex-col h-screen p-8 bg-light text-black font-sans">
+    <div className="w-full flex flex-col h-screen p-8 bg-light text-black font-sans gap-8">
       <div className="w-full flex items-center">
         <Button color="tertiary" className="w-fit py-2 px-4" to="/auth">
           <MdOutlineArrowBack size={22} />
@@ -69,7 +74,7 @@ export default function Register() {
       </div>
       <div className="w-full items-center flex flex-col gap-10">
         <h1 className="text-4xl font-bold">Cadastre-se</h1>
-        <div className="w-1/3 flex flex-col gap-6 text-base items-center">
+        <div className="w-[90%] md:w-[60%] lg:w-[40%] xl:w-1/3 flex flex-col gap-6 text-base items-center">
           {/* Formulário */}
           <form className="w-full flex flex-col gap-6 text-base items-center" onSubmit={handleSubmit(onSubmit)}>
             <div className="w-full flex flex-col gap-4">
@@ -105,13 +110,15 @@ export default function Register() {
               <span>Cadastrar</span>
             </Button>
             <div>
-              {error && (
-                <div className="w-full flex items-center justify-center gap-2 text-lg font-normal text-error">
+              {error && !success && (
+                <div className="w-full flex items-center justify-center gap-2 text-lg font-normal text-error-500">
+                  <MdError size={24} />
+                  <span>Erro ao cadastrar:</span>
                   <span>{error}</span>
                 </div>
               )}
               {success && (
-                <div className="w-full flex items-center justify-center gap-2 text-lg font-normal text-black">
+                <div className="w-full flex items-center justify-center gap-2 text-lg font-normal text-light bg-success p-2">
                   <span>Cadastro realizado com sucesso!</span>
                 </div>
               )}
