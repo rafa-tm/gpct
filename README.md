@@ -67,7 +67,7 @@ Realmente, ter uma equipe própria dá muito trabalho. Você está certo em não
 
 </details>
 
-<details><summary>Terceira entrega ⚠️ (29/11/2023) </summary>
+## Terceira entrega ⚠️ (29/11/2023)
 
 
 Nesta versão poderemos criar uma conta, e o roteiro ficará salvo em uma collection (nesta versão apenas um roteiro).
@@ -90,4 +90,32 @@ Nesta versão poderemos criar uma conta, e o roteiro ficará salvo em uma collec
 
 - ⚠️ O firebase tem um recurso de cache offline, que recomendo usar, assim ao abrir a interface já conseguirá obter instantaneamente o dado do cache do firebase.
 
-</details>
+Obs: Este ultimo eu deixei para a proxima entrega, pois como iremos tratar de criação de novos modelos, edição, etc, creio que vai fazer mais sentido implementa-lo juntamente a essas alterações.
+
+### Detalhes e especificações do Firebase
+
+No firebase temos a seguinte estrutura:
+
+- users\ {uid} \ {user}
+
+Com user sendo um objeto com os seguintes campos:
+
+- createdAt: data de criação do usuário
+- email: email do usuário
+- id: id do usuário
+- scripts: collection de scripts do usuário
+
+E dentro de scripts, temos:
+
+- id: id do script
+- title: titulo do script
+- code: código do script (Em markdown)
+- created_at: data de criação do script
+- updated_at: data da ultima atualização do script
+- shared: booleano indicando se o script é compartilhado ou não
+
+Alguns destes campos são já pensando na proxima entrega. Por exemplo, o campo shared, que indica se o script é compartilhado ou não. Nas proximas entregas, iremos implementar a possibilidade de compartilhar um script com outros usuários, e este campo poderá ser usado para isso.
+
+E o campo updated_at, que indica a data da ultima atualização do script, será usado para exibição quando houver mais de um script, para saber qual foi o ultimo atualizado.
+
+Já title achei interessante ter, pois assim o usuário poderá dar um nome para o script, e não apenas ter o código. Assim quando tiver mais de um script, poderá identificar qual é qual.
