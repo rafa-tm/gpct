@@ -11,6 +11,18 @@ interface ResultMarkdownProps {
 }
 
 export default function ResultMarkdown({ markdown }: ResultMarkdownProps) {
+  function personalizaMarkdown(str: string): string {
+    // Verifica se '[ ]' ou '[x]' está presente na string
+    const regex = /\[\s?x\s?\]|\[\s?\]/gi;
+
+    // Substitui todas as ocorrências por '- [ ]' ou '- [x]'
+    const novaString = str.replace(regex, match => {
+      return match.includes('x') ? '- [x]' : '- [ ]';
+    });
+
+    return novaString;
+  }
+
   return (
     <ReactMarkdown
       className="remove-tailwindcss"
@@ -28,7 +40,7 @@ export default function ResultMarkdown({ markdown }: ResultMarkdownProps) {
           return <Accordion titulo={titulo}>{children}</Accordion>;
         },
       }}>
-      {markdown}
+      {personalizaMarkdown(markdown)}
     </ReactMarkdown>
   );
 }

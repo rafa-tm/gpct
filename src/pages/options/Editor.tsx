@@ -26,8 +26,8 @@ const tutorialMarkDown = `Este é um tutorial de Markdown
 
 ### Checkbox
 
-- [ ] Este é um checkbox desmarcado
-- [x] Este é um checkbox marcado
+[ ] Este é um checkbox desmarcado
+[x] Este é um checkbox marcado
 
 ### Grupo expansivel
 
@@ -48,7 +48,8 @@ export default function Editor() {
   const [scriptEdit, setScriptEdit] = React.useState<Script>(scriptLocal);
 
   const [showTutorial, setShowTutorial] = React.useState(config.tutorial);
-  const [scriptTutorial, setScriptTutorial] = React.useState(tutorialMarkDown);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //const [scriptTutorial, setScriptTutorial] = React.useState(tutorialMarkDown);
   const [expandView, setExpandView] = React.useState(false);
   const [preview, setPreview] = React.useState(false);
 
@@ -111,23 +112,29 @@ export default function Editor() {
   return (
     <div className="h-screen flex flex-col gap-2 font-sans bg-light">
       <Header user={user}>
-        <div className="w-1/3 flex gap-2 items-center text-white text-base">
-          <label htmlFor="tituloScript" className="font-medium">
-            Titulo:
-          </label>
-          <input
-            id="tituloScript"
-            name="tituloScript"
-            type="text"
-            value={scriptEdit?.title}
-            onChange={event => {
-              setScriptEdit({ ...scriptEdit, title: event.target.value, updated_at: new Date().toLocaleString() });
-            }}
-            placeholder="Insira um titulo para este roteiro"
-            className="w-full px-2 bg-transparent border-b-2 border-stone-200 focus:outline-none focus:border-white"
-            autoComplete="off"
-          />
-        </div>
+        {showTutorial ? (
+          <div className="w-1/3 flex items-center text-white text-lg font-bold text-center">
+            <h1 className="w-full uppercase">Bem vindo! Este é o Tutorial do GPCT</h1>
+          </div>
+        ) : (
+          <div className="w-1/3 flex gap-2 items-center text-white text-base">
+            <label htmlFor="tituloScript" className="font-medium">
+              Titulo:
+            </label>
+            <input
+              id="tituloScript"
+              name="tituloScript"
+              type="text"
+              value={scriptEdit?.title}
+              onChange={event => {
+                setScriptEdit({ ...scriptEdit, title: event.target.value, updated_at: new Date().toLocaleString() });
+              }}
+              placeholder="Insira um titulo para este roteiro"
+              className="w-full px-2 bg-transparent border-b-2 border-stone-200 focus:outline-none focus:border-white"
+              autoComplete="off"
+            />
+          </div>
+        )}
       </Header>
       <div className="w-full h-[90%] flex justify-center items-center gap-6 px-4">
         {/* Preview Modal */}
@@ -136,7 +143,7 @@ export default function Editor() {
             <PreviewResult
               close={setPreview}
               markdown={scriptEdit}
-              tutorial={{ code: scriptTutorial, ativo: showTutorial }}
+              tutorial={{ code: tutorialMarkDown, ativo: showTutorial }}
             />
           </div>
         )}
@@ -188,15 +195,15 @@ export default function Editor() {
           {/* TextArea markdown */}
           <textarea
             className="w-full h-full resize-none p-2 placeholder:text-black border border-dark rounded-md text-base font-normal"
-            value={showTutorial ? scriptTutorial : scriptEdit.code}
+            value={showTutorial ? tutorialMarkDown : scriptEdit.code}
             onChange={event => {
               if (showTutorial) {
-                setScriptTutorial(event.target.value);
                 return;
               }
               setScriptEdit({ ...scriptEdit, code: event.target.value, updated_at: new Date().toLocaleString() });
             }}
             placeholder="Digite seu markdown aqui e veja o resultado ao lado."
+            {...(showTutorial ? { readOnly: true } : {})}
           />
         </div>
         {/* Result Side */}
@@ -222,7 +229,7 @@ export default function Editor() {
           )}
           <div className="w-full h-full bg-slate-200 border border-dark overflow-y-scroll p-4">
             <div className="bg-white min-h-full py-4 px-4 drop-shadow-md">
-              <ResultMarkdown markdown={showTutorial ? scriptTutorial : scriptEdit.code} />
+              <ResultMarkdown markdown={showTutorial ? tutorialMarkDown : scriptEdit.code} />
             </div>
           </div>
         </div>

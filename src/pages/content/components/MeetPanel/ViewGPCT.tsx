@@ -35,6 +35,7 @@ export default function ViewGPCT() {
   }
 
   const scriptLocal: ScriptLocal = useStorage(scriptLocalStorage);
+
   const [user, setUser] = React.useState<User>(null);
   const [userScripts, setUserScripts] = React.useState<Scripts>(null);
   const [login, setLogin] = React.useState<boolean>(false);
@@ -86,6 +87,7 @@ export default function ViewGPCT() {
         getAllScriptsFromUser(user.uid).then(response => {
           if (response) {
             setUserScripts(response[0]);
+            console.log(response[0]);
           }
         });
       } else {
@@ -97,7 +99,7 @@ export default function ViewGPCT() {
   }, []);
 
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-white drop-shadow-xl">
       <header
         id="draggableHeader"
         className="w-full bg-secondary-500 flex justify-between items-center py-1 h-fit pl-4 pr-2 drop-shadow-md">
@@ -107,8 +109,15 @@ export default function ViewGPCT() {
         <nav className="flex font-black gap-2 items-center">
           <div className="relative">
             <button
-              className="bg-primary-500 px-2 py-1 hover:bg-primary-700 flex items-center justify-center"
-              onClick={() => setShowMenu(!showMenu)}>
+              className="bg-primary-500 px-4 py-[2px] hover:bg-primary-700 flex items-center justify-center gap-2 font-bold rounded"
+              onClick={() => {
+                if (user) {
+                  setShowMenu(!showMenu);
+                } else {
+                  setLogin(!login);
+                }
+              }}>
+              <span className="text-dark">{user ? user.email.split('@')[0] : 'Login'}</span>
               <MdPerson size={18} />
             </button>
             {showMenu && (
@@ -148,7 +157,7 @@ export default function ViewGPCT() {
         </nav>
       </header>
       {login ? (
-        <div className="w-full flex flex-col gap-8 mt-8 items-center px-8">
+        <div className="w-full h-[80%] flex flex-col gap-8 items-center px-8 overflow-x-hidden overflow-y-scroll">
           <div className="flex w-full">
             <Button
               type="button"
@@ -197,11 +206,33 @@ export default function ViewGPCT() {
           </form>
         </div>
       ) : (
-        <div className="w-full py-4 px-8 bg-white">
-          <ResultMarkdown markdown={userScripts !== null ? userScripts.code : scriptLocal.code} />
+        <div className="w-full h-[90%] py-4 px-8 bg-white overflow-y-scroll">
+          {user ? (
+            userScripts && userScripts.code.length > 0 ? (
+              <ResultMarkdown markdown={userScripts.code} />
+            ) : (
+              <div className="w-full flex flex-col gap-4 items-center">
+                <h1 className="text-xl font-bold">Você ainda não possui roteiros salvos!</h1>
+                <h2 className="text-lg font-normal text-center">
+                  Crie um roteiro e salve para acessar ele a qualquer momento.
+                </h2>
+              </div>
+            )
+          ) : scriptLocal.code.length > 0 ? (
+            <ResultMarkdown markdown={scriptLocal.code} />
+          ) : (
+            <div className="w-full flex flex-col gap-4 items-center py-4">
+              <h1 className="text-xl font-bold text-center">
+                Você ainda não possui roteiros salvos no armazenamento local!
+              </h1>
+              <h2 className="text-lg font-normal text-center">
+                Crie um roteiro no editor para acessa-lo aqui a qualquer momento. Ou faça login para acessar seus
+                roteiros salvos.
+              </h2>
+            </div>
+          )}
         </div>
       )}
-      {/* <div id="GPCT-RESIZE-BOX" className="w-5 h-5 absolute bottom-0 right-0 bg-red-500 cursor-se-resize"></div> */}
     </div>
   );
 }

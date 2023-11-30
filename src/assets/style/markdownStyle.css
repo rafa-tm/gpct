@@ -63,7 +63,7 @@
   list-style-type: none;
   margin-bottom: 1em;
   margin-top: 0;
-  padding-left: 0;
+  padding-left: 1em;
 }
 
 .task-list-item {
@@ -74,10 +74,17 @@
 }
 
 .remove-tailwindcss ol {
-  list-style-type: decimal;
+  list-style-type: disc;
   margin-bottom: 1em;
   margin-top: 0;
   padding-left: 2em;
+}
+
+.remove-tailwindcss ul {
+  list-style-type: disc;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding-left: 1.5em;
 }
 
 .remove-tailwindcss li {

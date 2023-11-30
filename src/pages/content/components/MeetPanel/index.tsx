@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import ViewGPCT from '@root/src/pages/content/components/MeetPanel/ViewGPCT';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { attachTwindStyle } from '@src/shared/style/twind';
+import { Rnd } from 'react-rnd';
 
 refreshOnUpdate('pages/content');
 
@@ -26,73 +27,94 @@ function waitUntilJoinCall() {
   });
 }
 
-function createPanelElement() {
-  const root = document.createElement('div');
-  root.id = 'GPCT-PANEL-ROOT';
-  root.style.width = '40%';
-  root.style.height = '85%';
-  root.style.position = 'absolute';
-
+const ResizableComponent = () => {
+  const savedSize = localStorage.getItem('panelSize');
   const savedPosition = localStorage.getItem('panelPosition');
-  if (savedPosition) {
+
+  if (savedPosition && savedSize) {
+    const { width, height } = JSON.parse(savedSize);
     const { left, top } = JSON.parse(savedPosition);
-    root.style.left = left;
-    root.style.top = top;
+    return (
+      <Rnd
+        default={{
+          x: left,
+          y: top,
+          width,
+          height,
+        }}
+        onDragStop={(e, d) => {
+          localStorage.setItem(
+            'panelPosition',
+            JSON.stringify({
+              left: d.x,
+              top: d.y,
+            }),
+          );
+        }}
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        onResizeStop={(e, direction, ref, delta, position) => {
+          localStorage.setItem(
+            'panelSize',
+            JSON.stringify({
+              width: ref.style.width,
+              height: ref.style.height,
+            }),
+          );
+        }}>
+        <ViewGPCT />
+      </Rnd>
+    );
   } else {
-    root.style.left = '16px';
-    root.style.top = '16px';
+    return (
+      <Rnd
+        default={{
+          x: 16,
+          y: 16,
+          width: 600,
+          height: 600,
+        }}
+        onDragStop={(e, d) => {
+          localStorage.setItem(
+            'panelPosition',
+            JSON.stringify({
+              left: d.x,
+              top: d.y,
+            }),
+          );
+        }}
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        onResizeStop={(e, direction, ref, delta, position) => {
+          localStorage.setItem(
+            'panelSize',
+            JSON.stringify({
+              width: ref.style.width,
+              height: ref.style.height,
+            }),
+          );
+        }}>
+        <ViewGPCT />
+      </Rnd>
+    );
   }
-  root.style.zIndex = '10000';
-  root.style.borderRadius = '4px';
-  root.style.boxShadow = '0 0 16px rgba(0,0,0,0.5)';
-  root.style.backgroundColor = '#fff';
-  root.style.overflow = 'scroll';
-  document.body.appendChild(root);
-  return root;
-}
+};
 
-function makeDraggable() {
-  const panelRoot = document.getElementById('GPCT-PANEL-ROOT');
-  let isDragging = false;
-  let offsetX, offsetY;
+function createPanelResizeble() {
+  // Elemento do painel, inserido na pagina
+  const panel = document.createElement('div');
+  panel.id = 'GPCT-PANEL-ROOT';
+  panel.style = `
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    z-index: 10000;
+  `;
 
-  panelRoot.addEventListener('mousedown', e => {
-    isDragging = true;
-    offsetX = e.clientX - panelRoot.getBoundingClientRect().left;
-    offsetY = e.clientY - panelRoot.getBoundingClientRect().top;
-    panelRoot.style.transition = 'none';
-    panelRoot.style.cursor = 'grabbing';
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (isDragging) {
-      const left = e.clientX - offsetX;
-      const top = e.clientY - offsetY;
-      panelRoot.style.left = left + 'px';
-      panelRoot.style.top = top + 'px';
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (isDragging) {
-      isDragging = false;
-      panelRoot.style.transition = '0.3s';
-      panelRoot.style.cursor = 'grab';
-      localStorage.setItem(
-        'panelPosition',
-        JSON.stringify({
-          left: panelRoot.style.left,
-          top: panelRoot.style.top,
-        }),
-      );
-    }
-  });
+  document.body.appendChild(panel);
+  attachTwindStyle(panel, document);
+  createRoot(panel).render(<ResizableComponent />);
 }
 
 (async () => {
   await waitUntilJoinCall();
-  const panel = createPanelElement();
-  attachTwindStyle(panel, document);
-  createRoot(panel).render(<ViewGPCT />);
-  makeDraggable();
+  createPanelResizeble();
 })();
