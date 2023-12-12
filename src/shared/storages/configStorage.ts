@@ -15,6 +15,7 @@ const storage = createStorage<Config>(
   },
   {
     storageType: StorageType.Local,
+    liveUpdate: true,
   },
 );
 

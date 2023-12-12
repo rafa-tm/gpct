@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@components/Button';
-import Input from '@components/Input';
+import Button from '@src/components/Button';
+import Input from '@src/components/Input';
 import { MdOutlineArrowBack, MdError } from 'react-icons/md';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';

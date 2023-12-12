@@ -2,8 +2,8 @@ import React from 'react';
 
 import logotipo from '@src/assets/img/icon-128.png';
 import ResultMarkdown from '@src/components/ResultMarkdown';
-import Button from '@components/Button';
-import Input from '@components/Input';
+import Button from '@src/components/Button';
+import Input from '@src/components/Input';
 import useStorage from '@src/shared/hooks/useStorage';
 import scriptLocalStorage, { ScriptLocal } from '@root/src/shared/storages/scriptLocalStorage';
 import {

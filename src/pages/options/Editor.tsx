@@ -2,10 +2,10 @@ import React from 'react';
 import { MdDelete, MdHelp, MdClose } from 'react-icons/md';
 import { RiExpandLeftFill, RiExpandRightFill, RiEyeFill } from 'react-icons/ri';
 
-import Header from '@components/Header';
-import Button from '@components/Button';
-import ResultMarkdown from '@components/ResultMarkdown';
-import PreviewResult from '@components/PreviewResult';
+import Header from '@src/components/Header';
+import Button from '@src/components/Button';
+import ResultMarkdown from '@src/components/ResultMarkdown';
+import PreviewResult from '@src/components/PreviewResult';
 
 import useStorage from '@src/shared/hooks/useStorage';
 import scriptLocalStorage, { ScriptLocal } from '@root/src/shared/storages/scriptLocalStorage';

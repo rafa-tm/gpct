@@ -23,6 +23,7 @@ const storage = createStorage<ScriptLocal>(
   },
   {
     storageType: StorageType.Local,
+    liveUpdate: true,
   },
 );
 

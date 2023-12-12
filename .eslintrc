@@ -28,8 +28,15 @@
     }
   },
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "import/no-unresolved": "off"
+    "react/react-in-jsx-scope": "on",
+    "import/no-unresolved": "on",
+    "import/named": "on",
+    "import/default": "on",
+    "import/namespace": "on",
+    "import/no-absolute-path": "on",
+    "import/no-webpack-loader-syntax": "on",
+    "import/no-self-import": "on",
+    "import/no-cycle": "on"
   },
   "globals": {
     "chrome": "readonly"
