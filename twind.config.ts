@@ -39,11 +39,11 @@ export default defineConfig({
       fontFamily: {
         sans: 'Montserrat, sans-serif',
       },
+      classNames: {
+        'task-list-item': 'flex items-center gap-2',
+        'contains-task-list': 'flex flex-col gap-2',
+        'task-list-checkbox': 'w-5 h-5',
+      },
     },
-  },
-  preflight: {
-    '@import': [
-      'url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap")',
-    ],
   },
 });

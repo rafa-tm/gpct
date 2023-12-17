@@ -5,18 +5,19 @@ import { attachTwindStyle } from '@src/shared/style/twind';
 
 refreshOnUpdate('pages/content');
 
-function waitUntilJoinCall() {
+function waitUntilJoinCall(): Promise<void> {
   return new Promise<void>(resolve => {
     const observer = new MutationObserver(changes => {
       for (const change of changes) {
-        if (change.target.classList.contains('google-material-icons')) {
-          for (const node of change.addedNodes) {
-            if (node.nodeType === Node.TEXT_NODE && node.data === 'call_end') {
+        const target = change.target as HTMLElement;
+        if (target.classList.contains('google-material-icons')) {
+          const addedNodes = change.addedNodes as NodeListOf<HTMLElement>;
+          addedNodes.forEach(node => {
+            if (node.textContent === 'call_end') {
               observer.disconnect();
-              console.log('call started');
-              return resolve();
+              resolve();
             }
-          }
+          });
         }
       }
     });

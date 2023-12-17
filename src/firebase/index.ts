@@ -3,18 +3,17 @@ import { browserSessionPersistence, getAuth, setPersistence } from 'firebase/aut
 
 import { getFirestore } from 'firebase/firestore';
 
-// Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTHDOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECTID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGEBUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGINGSENDERID,
-  appId: import.meta.env.VITE_FIREBASE_APPID,
+  apiKey: 'AIzaSyCw6nPdS-mrOosy0EIcOvvvgDLcUBryBlA',
+  authDomain: 'gpct-extencion.firebaseapp.com',
+  projectId: 'gpct-extencion',
+  storageBucket: 'gpct-extencion.appspot.com',
+  messagingSenderId: '405760132683',
+  appId: '1:405760132683:web:222998e679519c4f89afce',
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 // Export Firebase Auth
 export const auth = getAuth(app);

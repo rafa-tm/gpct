@@ -1,22 +1,25 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import ViewGPCT from '@root/src/pages/content/components/MeetPanel/ViewGPCT';
+import PanelRoutes from '@pages/content/components/MeetPanel/PanelRoutes';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { attachTwindStyle } from '@src/shared/style/twind';
 import { Rnd } from 'react-rnd';
 
 refreshOnUpdate('pages/content');
 
-function waitUntilJoinCall() {
-  return new Promise(resolve => {
+function waitUntilJoinCall(): Promise<void> {
+  return new Promise<void>(resolve => {
     const observer = new MutationObserver(changes => {
       for (const change of changes) {
-        if (change.target.classList.contains('google-material-icons')) {
-          for (const node of change.addedNodes) {
-            if (node.nodeType === Node.TEXT_NODE && node.data === 'call_end') {
+        const target = change.target as HTMLElement;
+        if (target.classList.contains('google-material-icons')) {
+          const addedNodes = change.addedNodes as NodeListOf<HTMLElement>;
+          addedNodes.forEach(node => {
+            if (node.textContent === 'call_end') {
               observer.disconnect();
-              return resolve();
+              resolve();
             }
-          }
+          });
         }
       }
     });
@@ -61,7 +64,7 @@ const ResizableComponent = () => {
             }),
           );
         }}>
-        <ViewGPCT />
+        <PanelRoutes />
       </Rnd>
     );
   } else {
@@ -92,7 +95,7 @@ const ResizableComponent = () => {
             }),
           );
         }}>
-        <ViewGPCT />
+        <PanelRoutes />
       </Rnd>
     );
   }
@@ -102,12 +105,10 @@ function createPanelResizeble() {
   // Elemento do painel, inserido na pagina
   const panel = document.createElement('div');
   panel.id = 'GPCT-PANEL-ROOT';
-  panel.style = `
-    position: absolute;
-    left: 16px;
-    top: 16px;
-    z-index: 10000;
-  `;
+  panel.style.position = 'absolute';
+  panel.style.left = '16px';
+  panel.style.top = '16px';
+  panel.style.zIndex = '10000';
 
   document.body.appendChild(panel);
   attachTwindStyle(panel, document);

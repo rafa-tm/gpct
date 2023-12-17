@@ -6,7 +6,7 @@ import packageJson from './package.json' assert { type: 'json' };
  */
 const manifest = {
   manifest_version: 3,
-  name: packageJson.name,
+  name: "GPCT",
   version: packageJson.version,
   description: packageJson.description,
   permissions: ['tabs', 'activeTab', 'storage', 'scripting'],
@@ -19,7 +19,6 @@ const manifest = {
     //default_popup: 'src/pages/popup/index.html',
     default_icon: 'icon-34.png',
   },
-
   icons: {
     34: 'icon-34.png',
     128: 'icon-128.png',
@@ -29,10 +28,9 @@ const manifest = {
       matches: ['https://meet.google.com/*'],
       js: ['src/pages/content/index.js'],
       // KEY for cache invalidation
-      //css: ['assets/css/contentStyle<KEY>.chunk.css'],
+      css: ['assets/css/contentStyle<KEY>.chunk.css'],
     },
   ],
-
   web_accessible_resources: [
     {
       resources: ['assets/js/*.js', 'assets/css/*.css', 'icon-128.png', 'icon-34.png'],

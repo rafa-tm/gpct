@@ -49,6 +49,12 @@ export default defineConfig({
     reportCompressedSize: isProduction,
     emptyOutDir: !isDev,
     rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) {
+          return;
+        }
+        warn(warning);
+      },
       input: {
         content: resolve(pagesDir, 'content', 'index.ts'),
         background: resolve(pagesDir, 'background', 'index.ts'),

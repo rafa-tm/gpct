@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import AppRoutes from '@pages/options/AppRoutes';
+import AppRoutes from '@root/src/pages/options/AppRoutes';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { attachTwindStyle } from '@src/shared/style/twind';
 

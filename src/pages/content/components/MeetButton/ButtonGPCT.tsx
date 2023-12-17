@@ -1,5 +1,5 @@
 import React from 'react';
-import logotipo from '@src/assets/img/icon-128.png';
+import logotipo from '../../../../assets/img/icon-128.png';
 
 export default function ButtonGPCT() {
   const panelRoot = document.getElementById('GPCT-PANEL-ROOT');
