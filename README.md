@@ -67,8 +67,7 @@ Realmente, ter uma equipe própria dá muito trabalho. Você está certo em não
 
 </details>
 
-## Terceira entrega ⚠️ (29/11/2023)
-
+<details><summary>Terceira entrega ✅ (29/11/2023)</summary>
 
 Nesta versão poderemos criar uma conta, e o roteiro ficará salvo em uma collection (nesta versão apenas um roteiro).
 
@@ -119,3 +118,15 @@ Alguns destes campos são já pensando na proxima entrega. Por exemplo, o campo 
 E o campo updated_at, que indica a data da ultima atualização do script, será usado para exibição quando houver mais de um script, para saber qual foi o ultimo atualizado.
 
 Já title achei interessante ter, pois assim o usuário poderá dar um nome para o script, e não apenas ter o código. Assim quando tiver mais de um script, poderá identificar qual é qual.
+
+</details>
+
+<details><summary>Ultima? entrega ✅ (17/12/2023)</summary>
+
+✅ Agora que o usuário já tem uma conta, chegou a hora de poder ter vários roteiros.
+
+✅ Na tela inicial o usuário poderá criar novos roteiros e ter uma forma do usuário ver quais roteiros já criou. Ao selecionar um roteiro ele pode altera-lo e salva-lo (automaticamente ou clicando em salvar). Ele deve também poder excluir algum roteiro que não queira mais.
+
+✅ No Google Meet, abrir o último roteiro utilizado inicialmente, e permitir de forma fácil escolher outro roteiro para usar na reunião.
+
+</details>
